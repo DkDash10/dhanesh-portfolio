@@ -1,0 +1,579 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600&display=swap");
+@import "tailwindcss";
+
+/* =========================================
+   THEME TOKENS
+   ========================================= */
+
+@theme {
+  --color-bg: var(--theme-bg);
+  --color-surface: var(--theme-surface);
+  --color-surface-hover: var(--theme-surface-hover);
+
+  --color-text: var(--theme-text);
+  --color-text-muted: var(--theme-text-muted);
+  --color-text-subtle: var(--theme-text-subtle);
+
+  --color-border: var(--theme-border);
+  --color-border-light: var(--theme-border-light);
+
+  --color-accent: var(--theme-accent);
+  --color-accent-hover: var(--theme-accent-hover);
+
+  --font-signature: "Dancing Script", cursive;
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "Geist Mono", monospace;
+
+  --max-width-portfolio: 1400px;
+}
+/* =========================================
+   DARK THEME — DEFAULT
+   ========================================= */
+
+:root {
+  color-scheme: dark;
+
+  --theme-bg: #080808;
+  --theme-surface: #101010;
+  --theme-surface-hover: #151515;
+
+  --theme-text: #f4f4f0;
+  --theme-text-muted: #858585;
+  --theme-text-subtle: #555555;
+
+  --theme-border: rgba(255, 255, 255, 0.12);
+  --theme-border-light: rgba(255, 255, 255, 0.07);
+
+  --theme-accent: #ff5a36;
+  --theme-accent-hover: #e94827;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  --theme-bg: #f4f4f0;
+  --theme-surface: #ffffff;
+  --theme-surface-hover: #eaeae5;
+
+  --theme-text: #080808;
+  --theme-text-muted: #666666;
+  --theme-text-subtle: #999999;
+
+  --theme-border: rgba(0, 0, 0, 0.12);
+  --theme-border-light: rgba(0, 0, 0, 0.07);
+
+  --theme-accent: #e94827;
+  --theme-accent-hover: #c93d21;
+}
+
+/* =========================================
+   BASE
+   ========================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--theme-bg);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+
+  background: var(--theme-bg);
+  color: var(--theme-text);
+
+  font-family: var(--font-sans);
+
+  transition:
+    background-color 400ms ease,
+    color 400ms ease;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #080808;
+}
+
+/* =========================================
+   SCROLLBAR
+   ========================================= */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--theme-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--theme-text-subtle);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-text-muted);
+}
+
+/* =========================================
+   PORTFOLIO LAYOUT
+   ========================================= */
+
+.portfolio-container {
+  width: min(calc(100% - 2.5rem), var(--max-width-portfolio));
+
+  margin-inline: auto;
+}
+
+.portfolio-section {
+  position: relative;
+  width: 100%;
+}
+
+/* =========================================
+   TYPOGRAPHY
+   ========================================= */
+
+.display-text {
+  font-family: var(--font-sans);
+  letter-spacing: -0.05em;
+}
+
+.mono-text {
+  font-family: var(--font-mono);
+}
+
+/* =========================================
+   PERFORMANCE
+   ========================================= */
+
+.gpu {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.motion-safe {
+  will-change: transform, opacity;
+}
+
+/* =========================================
+   REDUCED MOTION
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =========================================
+   SIGNATURE
+   ========================================= */
+
+.signature {
+  isolation: isolate;
+}
+
+.signature-base,
+.signature-glitch {
+  display: inline-block;
+}
+
+.signature-glitch {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* Main signature */
+
+.signature-base {
+  animation: signature-enter 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Accent glitch */
+
+.signature-glitch-accent {
+  color: var(--color-accent);
+
+  animation: signature-glitch-accent 900ms steps(1, end) both;
+}
+
+/* Secondary glitch */
+
+.signature-glitch-text {
+  color: var(--color-text);
+
+  animation: signature-glitch-text 900ms steps(1, end) both;
+}
+
+/* Hover */
+
+.group:hover .signature-base {
+  animation: signature-enter 900ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .signature-glitch-accent {
+  animation: signature-glitch-accent 900ms steps(1, end);
+}
+
+.group:hover .signature-glitch-text {
+  animation: signature-glitch-text 900ms steps(1, end);
+}
+
+/* =========================================
+   SIGNATURE KEYFRAMES
+   ========================================= */
+
+@keyframes signature-enter {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+    filter: blur(3px);
+  }
+
+  20% {
+    opacity: 1;
+    transform: translateX(4px);
+    filter: blur(0);
+  }
+
+  27% {
+    transform: translateX(-3px);
+  }
+
+  34% {
+    transform: translateX(2px);
+  }
+
+  42% {
+    transform: translateX(-1px);
+  }
+
+  52%,
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes signature-glitch-accent {
+  0%,
+  12%,
+  72%,
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+    clip-path: inset(0 100% 0 0);
+  }
+
+  15% {
+    opacity: 0.9;
+    transform: translateX(7px);
+    clip-path: inset(0 0 70% 0);
+  }
+
+  20% {
+    opacity: 0.75;
+    transform: translateX(-5px);
+    clip-path: inset(65% 0 15% 0);
+  }
+
+  25% {
+    opacity: 0.85;
+    transform: translateX(8px);
+    clip-path: inset(25% 0 45% 0);
+  }
+
+  31% {
+    opacity: 0.5;
+    transform: translateX(-4px);
+    clip-path: inset(75% 0 5% 0);
+  }
+
+  38% {
+    opacity: 0.7;
+    transform: translateX(5px);
+    clip-path: inset(40% 0 35% 0);
+  }
+
+  46% {
+    opacity: 0.35;
+    transform: translateX(-3px);
+    clip-path: inset(10% 0 65% 0);
+  }
+
+  55% {
+    opacity: 0.15;
+    transform: translateX(2px);
+    clip-path: inset(55% 0 20% 0);
+  }
+
+  65%,
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+}
+
+@keyframes signature-glitch-text {
+  0%,
+  17%,
+  76%,
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+    clip-path: inset(0 100% 0 0);
+  }
+
+  21% {
+    opacity: 0.7;
+    transform: translateX(-6px);
+    clip-path: inset(60% 0 20% 0);
+  }
+
+  28% {
+    opacity: 0.5;
+    transform: translateX(4px);
+    clip-path: inset(15% 0 65% 0);
+  }
+
+  35% {
+    opacity: 0.65;
+    transform: translateX(-7px);
+    clip-path: inset(35% 0 40% 0);
+  }
+
+  43% {
+    opacity: 0.35;
+    transform: translateX(3px);
+    clip-path: inset(70% 0 10% 0);
+  }
+
+  50% {
+    opacity: 0.25;
+    transform: translateX(-2px);
+    clip-path: inset(5% 0 75% 0);
+  }
+
+  60%,
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+}
+
+/* =========================================================
+   NAV LINK GLITCH
+   ========================================================= */
+
+.nav-glitch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-glitch-text::before,
+.nav-glitch-text::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  content: attr(data-text);
+}
+
+.nav-glitch-text::before {
+  color: var(--color-accent);
+}
+
+.nav-glitch-text::after {
+  color: var(--color-text);
+}
+
+.nav-glitch-link:hover .nav-glitch-text::before {
+  animation: nav-glitch-accent 420ms steps(1, end);
+}
+
+.nav-glitch-link:hover .nav-glitch-text::after {
+  animation: nav-glitch-text 420ms steps(1, end);
+}
+
+@keyframes nav-glitch-accent {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translate(0);
+    clip-path: inset(0 100% 0 0);
+  }
+
+  15% {
+    opacity: 0.9;
+    transform: translate(-3px, 1px);
+    clip-path: inset(10% 0 65% 0);
+  }
+
+  30% {
+    opacity: 0.75;
+    transform: translate(3px, -1px);
+    clip-path: inset(55% 0 20% 0);
+  }
+
+  45% {
+    opacity: 0.8;
+    transform: translate(-2px, 0);
+    clip-path: inset(25% 0 50% 0);
+  }
+
+  60% {
+    opacity: 0.55;
+    transform: translate(2px, 1px);
+    clip-path: inset(70% 0 5% 0);
+  }
+
+  75% {
+    opacity: 0.25;
+    transform: translate(-1px, 0);
+    clip-path: inset(40% 0 35% 0);
+  }
+}
+
+@keyframes nav-glitch-text {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translate(0);
+    clip-path: inset(0 100% 0 0);
+  }
+
+  18% {
+    opacity: 0.8;
+    transform: translate(3px, 0);
+    clip-path: inset(65% 0 15% 0);
+  }
+
+  34% {
+    opacity: 0.6;
+    transform: translate(-2px, 1px);
+    clip-path: inset(15% 0 65% 0);
+  }
+
+  52% {
+    opacity: 0.5;
+    transform: translate(2px, -1px);
+    clip-path: inset(45% 0 30% 0);
+  }
+
+  70% {
+    opacity: 0.25;
+    transform: translate(-1px, 0);
+    clip-path: inset(75% 0 5% 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-glitch-link:hover .nav-glitch-text::before,
+  .nav-glitch-link:hover .nav-glitch-text::after {
+    animation: none;
+  }
+}
+
+.theme-transition,
+.theme-transition *,
+::view-transition-old(root),
+::view-transition-new(root) {
+  transition:
+    background-color 450ms ease,
+    color 450ms ease,
+    border-color 450ms ease,
+    fill 450ms ease,
+    stroke 450ms ease;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 450ms;
+  animation-timing-function: ease;
+}
+
+/* ----------------------------------------
+   CUSTOM CURSOR
+---------------------------------------- */
+
+.custom-cursor {
+  pointer-events: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .custom-cursor {
+    display: none;
+  }
+}
+
+
+
+/* =========================================================
+   HERO SILK VIDEO
+========================================================= */
+
+.hero-silk-video {
+  filter: grayscale(1) contrast(1.05);
+  mix-blend-mode: screen;
+}
+
+/* Light theme:
+   turn the dark silk into a soft white/silver silk */
+[data-theme="light"] .hero-silk-video {
+  filter: grayscale(1) invert(1) contrast(0.9);
+  mix-blend-mode: multiply;
+}
+
+.hero-silk-light {
+  background: transparent;
+}
+
+/* Dark theme */
+:root .hero-silk-light {
+  background: linear-gradient(115deg, rgba(0, 0, 0, 0.35), transparent 45%, rgba(0, 0, 0, 0.25));
+}
+
+/* Light theme */
+[data-theme="light"] .hero-silk-light {
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.25), transparent 45%, rgba(255, 255, 255, 0.4));
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-silk-video {
+    display: none;
+  }
+}
+
