@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ArrowUpRight, Gamepad2, Trophy, ChessKnight, Music2 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,33 +11,123 @@ const interests = [
     title: "Games",
     description: "Competitive matches, late-night sessions and the occasional victory screen.",
     icon: Gamepad2,
-    images: ["/media/about/games/efootball.jpg", "/media/about/games/mobile-legends.jpg", "/media/about/games/bgmi.jpg"],
+    images: ["/media/images/coc.jpg", "/media/images/ML.jpg", "/media/images/pes.jpg", "/media/images/bgmi.jpg"],
   },
   {
     number: "02",
     title: "Football",
     description: "The game, the rivalry, the goals and those moments worth watching twice.",
     icon: Trophy,
-    images: ["/media/about/football/ronaldo.jpg", "/media/about/football/messi.jpg"],
+    images: ["/media/images/cr7.jpg", "/media/images/messi.jpg"],
   },
   {
     number: "03",
     title: "Chess",
     description: "A quiet game where one unexpected move can change everything.",
     icon: ChessKnight,
-    images: ["/media/about/chess/brilliant-move.jpg"],
+    images: ["/media/images/chess.png"],
   },
   {
     number: "04",
     title: "Music",
     description: "Albums, headphones and songs that somehow become attached to memories.",
     icon: Music2,
-    images: ["/media/about/music/currents.jpg", "/media/about/music/starboy.jpg", "/media/about/music/astroworld.jpg", "/media/about/music/arctic-monkeys.jpg"],
+    images: ["/media/images/brunomars.png", "/media/images/metroboomin.jpg", "/media/images/postmalone.jpg", "/media/images/twentyonepilots.png"],
   },
 ];
 
 export default function About() {
   const sectionRef = useRef(null);
+  const imageRefs = useRef(new Map());
+  const [activeInterest, setActiveInterest] = useState(null);
+  const [mobileImage, setMobileImage] = useState(0);
+
+  useEffect(() => {
+    if (activeInterest === null) return;
+
+    const active = interests[activeInterest];
+    if (!active || active.images.length < 2) return;
+
+    const media = window.matchMedia("(max-width: 767px)");
+    if (!media.matches) return;
+
+    const interval = window.setInterval(() => {
+      setMobileImage((current) => (current + 1) % active.images.length);
+    }, 1250);
+
+    return () => window.clearInterval(interval);
+  }, [activeInterest]);
+
+  const handleCardMove = (event, interestIndex) => {
+    if (window.matchMedia("(pointer: coarse)").matches) return;
+
+    const card = event.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+    const interest = interests[interestIndex];
+
+    interest.images.forEach((_, index) => {
+      const node = imageRefs.current.get(`${interest.title}-${index}`);
+      if (!node) return;
+
+      const depth = index === 0 ? 1 : index === 1 ? 0.72 : index === 2 ? 0.48 : 0.3;
+      const base =
+        interest.images.length === 1
+          ? { x: 0, y: 0, rotate: 0 }
+          : index === 0
+            ? { x: -2, y: 0, rotate: -5 }
+            : index === 1
+              ? { x: 2, y: -2, rotate: 5 }
+              : index === 2
+                ? { x: -1, y: 2, rotate: 2 }
+                : { x: 2, y: 2, rotate: -3 };
+
+      gsap.to(node, {
+        x: base.x + x * 18 * depth,
+        y: base.y + y * 14 * depth,
+        rotate: base.rotate + x * 5 * depth,
+        scale: index === 0 ? 1.045 : 1,
+        duration: 0.45,
+        ease: "power3.out",
+        overwrite: true,
+      });
+    });
+  };
+
+  const resetCardImages = (interestIndex) => {
+    const interest = interests[interestIndex];
+
+    interest.images.forEach((_, index) => {
+      const node = imageRefs.current.get(`${interest.title}-${index}`);
+      if (!node) return;
+
+      gsap.to(node, {
+        x: 0,
+        y: 0,
+        rotate: interest.images.length === 1 ? 0 : index === 0 ? -5 : index === 1 ? 5 : index === 2 ? 2 : -3,
+        scale: 1,
+        duration: 0.65,
+        ease: "power3.out",
+        overwrite: true,
+      });
+    });
+  };
+
+  const handleCardClick = (interestIndex) => {
+    if (!window.matchMedia("(pointer: coarse)").matches) return;
+
+    setActiveInterest((current) => {
+      if (current === interestIndex) {
+        setMobileImage(0);
+        return null;
+      }
+
+      setMobileImage(0);
+      return interestIndex;
+    });
+  };
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -143,10 +233,10 @@ export default function About() {
     return () => ctx.revert();
   }, []);
   return (
-    <section id="about" ref={sectionRef} className="relative z-10 overflow-hidden bg-bg pb-28 pt-28 lg:pb-32 lg:pt-32">
+    <section id="about" ref={sectionRef} className="relative z-10 overflow-hidden bg-bg pt-28 lg:pt-44">
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 z-0 h-120 overflow-hidden">
         <video autoPlay muted loop playsInline preload="metadata" className="hero-silk-video absolute inset-0 h-full w-full scale-105 object-cover opacity-40 blur-[10px]">
-          <source src="/media/bg-video.mp4" type="video/mp4" /> 
+          <source src="/media/bg-video.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-bg/55" />
         <div className="absolute inset-0 bg-linear-to-b from-bg via-bg/75 to-bg" />
@@ -200,7 +290,7 @@ export default function About() {
             RULE
         ================================================= */}
 
-        <div className="about-rule mt-20 h-px bg-border sm:mt-28" />
+        <div className="about-rule mt-10 h-px bg-border sm:mt-12" />
 
         {/* =================================================
             INTEREST INTRO
@@ -209,7 +299,10 @@ export default function About() {
         <div className="about-reveal mt-8 flex flex-col gap-4 sm:mt-10 sm:flex-row sm:items-end sm:justify-between">
           <span className="font-mono text-[12px] uppercase tracking-[0.18em] text-text-subtle">Outside the screen</span>
 
-          <p className="max-w-md text-sm leading-6 text-text-muted sm:text-right">Hover around. There are a few things I never really get tired of.</p>
+          <p className="max-w-md text-sm leading-6 text-text-muted sm:text-right">
+            <span className="hidden sm:inline">Move around. There are a few things I never really get tired of.</span>
+            <span className="sm:hidden">Tap around. There are a few things I never really get tired of.</span>
+          </p>
         </div>
 
         {/* =================================================
@@ -217,43 +310,69 @@ export default function About() {
         ================================================= */}
 
         <div className="about-grid mt-10 grid border-t border-border sm:grid-cols-2 lg:grid-cols-4">
-          {interests.map((interest) => {
+          {interests.map((interest, interestIndex) => {
             const Icon = interest.icon;
 
             return (
               <article
                 key={interest.title}
-                className="about-card group relative min-h-77.5 overflow-hidden border-b border-border px-1 py-8 transition-colors duration-500 hover:bg-surface sm:px-5 sm:py-10 lg:border-b-0 lg:border-r lg:first:border-l lg:last:border-r-0"
+                onClick={() => handleCardClick(interestIndex)}
+                onPointerMove={(event) => handleCardMove(event, interestIndex)}
+                onPointerLeave={() => resetCardImages(interestIndex)}
+                className={`about-card group relative min-h-77.5 touch-manipulation cursor-pointer overflow-hidden border-b border-border px-1 py-8 transition-colors duration-500 hover:bg-surface sm:px-5 sm:py-10 lg:border-b-0 lg:border-r lg:first:border-l lg:last:border-r-0 ${
+                  activeInterest === interestIndex ? "bg-surface" : ""
+                }`}
               >
                 {/* IMAGE LAYER */}
 
-                <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden opacity-20 transition-opacity duration-700 sm:opacity-0 sm:group-hover:opacity-100">
-                  {interest.images.map((image, index) => (
-                    <img
-                      key={image}
-                      src={image}
-                      alt=""
-                      aria-hidden="true"
-                      className={` absolute object-cover transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)] ${
-                        interest.images.length === 1
-                          ? "inset-0 h-full w-full"
-                          : ` ${
-                              index === 0
-                                ? "left-[8%] top-[12%] h-[72%] w-[62%] rotate-[-5deg]"
-                                : index === 1
-                                  ? "right-[7%] top-[8%] h-[66%] w-[58%] rotate-[5deg]"
-                                  : index === 2
-                                    ? "bottom-[5%] left-[18%] h-[62%] w-[55%] rotate-2"
-                                    : "bottom-[8%] right-[8%] h-[58%] w-[50%] -rotate-3"
-                            } `
-                      } ${index === 0 ? "group-hover:scale-[1.04]" : "group-hover:scale-100"} `}
-                    />
-                  ))}
+                <div
+                  className={`pointer-events-none absolute inset-0 z-0 overflow-hidden transition-opacity duration-700 ${
+                    activeInterest === interestIndex ? "opacity-100" : "opacity-20 sm:opacity-0 sm:group-hover:opacity-100"
+                  }`}
+                >
+                  {interest.images.map((image, index) => {
+                    const isMobileActive = activeInterest === interestIndex && mobileImage === index;
+
+                    return (
+                      <img
+                        key={image}
+                        ref={(node) => {
+                          const key = `${interest.title}-${index}`;
+                          if (node) imageRefs.current.set(key, node);
+                          else imageRefs.current.delete(key);
+                        }}
+                        src={image}
+                        alt=""
+                        aria-hidden="true"
+                        className={`absolute object-cover transition-[opacity,filter] duration-700 ease-[cubic-bezier(.22,1,.36,1)] ${
+                          interest.images.length === 1
+                            ? "inset-0 h-full w-full"
+                            : index === 0
+                              ? "left-[8%] top-[12%] h-[72%] w-[62%] rotate-[-5deg]"
+                              : index === 1
+                                ? "right-[7%] top-[8%] h-[66%] w-[58%] rotate-[5deg]"
+                                : index === 2
+                                  ? "bottom-[5%] left-[18%] h-[62%] w-[55%] rotate-2"
+                                  : "bottom-[8%] right-[8%] h-[58%] w-[50%] -rotate-3"
+                        } ${activeInterest === interestIndex ? "opacity-100" : "opacity-20 sm:opacity-0 sm:group-hover:opacity-100"} ${
+                          interest.images.length > 1 && isMobileActive
+                            ? "z-20 scale-[1.08] blur-0"
+                            : interest.images.length > 1 && activeInterest === interestIndex
+                              ? "opacity-35 sm:opacity-100"
+                              : ""
+                        }`}
+                      />
+                    );
+                  })}
                 </div>
 
                 {/* DARK IMAGE OVERLAY */}
 
-                <div className="pointer-events-none absolute inset-0 z-1 bg-black/35 opacity-30 transition-opacity duration-500 sm:opacity-0 sm:group-hover:opacity-100" />
+                <div
+                  className={`pointer-events-none absolute inset-0 z-1 bg-black/35 transition-opacity duration-500 ${
+                    activeInterest === interestIndex ? "opacity-45" : "opacity-30 sm:opacity-0 sm:group-hover:opacity-100"
+                  }`}
+                />
 
                 {/* CONTENT */}
 
@@ -277,7 +396,19 @@ export default function About() {
 
                 {/* ACCENT LINE */}
 
-                <span className="absolute bottom-0 left-0 z-20 h-px w-0 bg-accent transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:w-full" />
+                <span
+                  className={`absolute bottom-0 left-0 z-20 h-px bg-accent transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)] ${
+                    activeInterest === interestIndex ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
+                />
+
+                <span
+                  className={`pointer-events-none absolute right-5 top-1/2 z-20 hidden -translate-y-1/2 font-mono text-[12px] uppercase tracking-[0.16em] text-white/70 transition-all duration-500 sm:hidden ${
+                    activeInterest === interestIndex ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  {interest.images.length > 1 ? `${String(mobileImage + 1).padStart(2, "0")} / ${String(interest.images.length).padStart(2, "0")}` : "01"}
+                </span>
               </article>
             );
           })}
@@ -287,7 +418,7 @@ export default function About() {
             MEMORABLE CLOSE
         ================================================= */}
 
-        <div className="about-close mt-24 grid gap-8 border-t border-border pt-10 sm:mt-32 sm:pt-12 lg:grid-cols-[1fr_auto] lg:items-end">
+        <div className="about-close grid gap-8 border-t border-border pt-10 sm:pt-12 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
             <span className="font-mono text-[12px] uppercase tracking-[0.18em] text-text-subtle">After the interface</span>
 
