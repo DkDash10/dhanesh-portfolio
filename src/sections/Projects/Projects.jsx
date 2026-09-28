@@ -441,7 +441,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="work" ref={sectionRef} className="relative overflow-hidden bg-bg pt-28 lg:pt-44">
+    <section id="work" ref={sectionRef} className="relative overflow-hidden bg-bg pt-28 lg:pt-44 pb-20 lg:pb-32">
       <div className="mx-auto w-full max-w-portfolio px-5 sm:px-8 lg:px-12">
         <div className="projects-header">
           <div className="flex items-center gap-4">
