@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const progressysMedia = [
   {
-    number: "01",
+    number: "୦୧",
     label: "Hero",
     title: "A world built around motion.",
     description: "The opening experience establishes Progressys as a motion-led digital product rather than a conventional agency website.",
@@ -15,7 +15,7 @@ const progressysMedia = [
     poster: "/projects/progressys/Hero.png",
   },
   {
-    number: "02",
+    number: "୦୨",
     label: "Problem statement",
     title: "Typography becomes the transition.",
     description: "Large editorial type, changing emphasis and scroll-led reveals turn the problem statement into part of the narrative.",
@@ -23,7 +23,7 @@ const progressysMedia = [
     poster: "/projects/progressys/Problem Statement.png",
   },
   {
-    number: "03",
+    number: "୦୩",
     label: "What we do",
     title: "Physics, not decoration.",
     description: "Matter.js-powered circles form an interactive service map, giving the section a physical quality and making exploration part of the interface.",
@@ -31,7 +31,7 @@ const progressysMedia = [
     poster: "/projects/progressys/What we do.png",
   },
   {
-    number: "04",
+    number: "୦୪",
     label: "5D Model",
     title: "The Growth Algorithm comes alive.",
     description: "The 5D model unfolds through Diagnose, Design, Deploy, Drive and Dominate — using movement to explain the system.",
@@ -42,7 +42,7 @@ const progressysMedia = [
 
 const dwaarperMedia = [
   {
-    number: "01",
+    number: "୦୧",
     label: "Hero",
     title: "A marketplace built for discovery.",
     description: "The opening experience introduces Dwaarper and sets the path into a service marketplace designed around straightforward discovery.",
@@ -50,14 +50,14 @@ const dwaarperMedia = [
     poster: "/projects/dwaarper/Hero.png",
   },
   {
-    number: "02",
+    number: "୦୨",
     label: "Services",
     title: "Explore the services on offer.",
     description: "The services experience helps customers browse the marketplace and discover options that fit what they need.",
     video: "/projects/dwaarper/Videos/Services.mp4",
   },
   {
-    number: "03",
+    number: "୦୩",
     label: "Cart",
     title: "A considered cart experience.",
     description: "The cart keeps selected services and order details in view, giving customers a clear point to review before continuing to checkout.",
@@ -65,7 +65,7 @@ const dwaarperMedia = [
     poster: "/projects/dwaarper/Cart.png",
   },
   {
-    number: "04",
+    number: "୦୪",
     label: "Checkout",
     title: "A direct path to completion.",
     description: "The checkout flow carries the booking through its final steps, keeping the purchase experience connected to the rest of the marketplace.",
@@ -248,10 +248,10 @@ function ProgressysCaseStudy() {
     <article ref={sectionRef}>
       <div className="flex flex-col gap-8">
         <Reveal>
-          <div className="flex gap-6">
+          <div className="flex flex-col lg:flex-row gap-6">
             <div className="flex-1">
               <div className="flex items-center gap-3">
-                <span className="font-mono text-[12px] uppercase tracking-[0.18em] text-accent">02</span>
+                <span className="font-mono text-[12px] uppercase tracking-[0.18em] text-accent">୦୨</span>
                 <span className="h-px w-7 bg-accent/60" />
                 <span className="font-mono text-[12px] uppercase tracking-[0.18em] text-text-subtle">Digital experience</span>
               </div>
@@ -259,7 +259,7 @@ function ProgressysCaseStudy() {
               <h2 className="mt-7 text-[clamp(3.5rem,7vw,7.5rem)] font-light leading-[0.82] tracking-[-0.075em] text-text">Progressys</h2>
             </div>
 
-            <div className="flex-1 flex flex-col items-end ">
+            <div className="flex-1 flex flex-col items-start lg:items-end">
               <div className="mt-8 flex flex-wrap gap-2">
                 {["React", "GSAP", "ScrollTrigger", "Matter.js"].map((tag) => (
                   <span key={tag} className="rounded-full border border-border px-3 py-1.5 font-mono text-[12px] uppercase tracking-widest text-text-muted">
@@ -267,10 +267,9 @@ function ProgressysCaseStudy() {
                   </span>
                 ))}
               </div>
-              <p className="mt-7 text-end text-base leading-7 text-text-muted sm:text-lg">
+              <p className="mt-7 text-start lg:text-end text-base leading-7 text-text-muted sm:text-lg">
                 An interaction-heavy growth platform where typography, movement and scroll become part of the story.
               </p>
-
             </div>
           </div>
         </Reveal>
@@ -350,10 +349,10 @@ function DwaarperCaseStudy() {
     <article ref={sectionRef}>
       <div className="flex flex-col gap-8">
         <Reveal>
-          <div className="flex gap-6">
+          <div className="flex flex-col lg:flex-row gap-6">
             <div className="flex-1">
               <div className="flex items-center gap-3">
-                <span className="font-mono text-[12px] uppercase tracking-[0.18em] text-accent">01</span>
+                <span className="font-mono text-[12px] uppercase tracking-[0.18em] text-accent">୦୧</span>
                 <span className="h-px w-7 bg-accent/60" />
                 <span className="font-mono text-[12px] uppercase tracking-[0.18em] text-text-subtle">Full-stack marketplace</span>
               </div>
@@ -361,7 +360,7 @@ function DwaarperCaseStudy() {
               <h2 className="mt-7 text-[clamp(3.5rem,7vw,7.5rem)] font-light leading-[0.82] tracking-[-0.075em] text-text">Dwaarper</h2>
             </div>
 
-            <div className="flex flex-1 flex-col items-end">
+            <div className="flex flex-1 flex-col items-start lg:items-end">
               <div className="mt-8 flex flex-wrap justify-end gap-2">
                 {["React", "Node.js", "MongoDB", "Stripe"].map((tag) => (
                   <span key={tag} className="rounded-full border border-border px-3 py-1.5 font-mono text-[12px] uppercase tracking-widest text-text-muted">
@@ -369,10 +368,9 @@ function DwaarperCaseStudy() {
                   </span>
                 ))}
               </div>
-              <p className="mt-7 text-end text-base leading-7 text-text-muted sm:text-lg">
+              <p className="mt-7 text-start lg:text-end  text-base leading-7 text-text-muted sm:text-lg">
                 A service marketplace built from the ground up, connecting discovery, booking, cart and checkout in one consumer experience.
               </p>
-
             </div>
           </div>
         </Reveal>
@@ -441,25 +439,49 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="work" ref={sectionRef} className="relative overflow-hidden bg-bg pt-28 lg:pt-44 pb-20 lg:pb-32">
+    <section id="work" ref={sectionRef} className="relative overflow-hidden bg-bg py-10 lg:py-20">
       <div className="mx-auto w-full max-w-portfolio px-5 sm:px-8 lg:px-12">
         <div className="projects-header">
+          {/* Section label */}
           <div className="flex items-center gap-4">
-            <span className="font-mono text-[12px] uppercase tracking-[0.18em] text-accent">02</span>
-            <span className="h-px w-8 bg-accent/60" />
-            <span className="font-mono text-[12px] uppercase tracking-[0.18em] text-text-subtle">Selected work</span>
+            <span className="font-mono text-lg uppercase tracking-[0.18em] text-accent">02</span>
+
+            <span className="h-px w-8 bg-accent" />
+
+            <span className="font-mono text-lg uppercase tracking-[0.18em] text-text">Selected work</span>
           </div>
 
-          <div className="mt-10 max-w-5xl lg:mt-14">
-            <h1 className="text-[clamp(3.4rem,8vw,9rem)] font-light leading-[0.82] tracking-[-0.08em] text-text">
-              Things I
-              <br />
-              <span className="text-text-muted">actually built.</span>
-            </h1>
+          {/* Editorial intro */}
+          <div className="mt-12 grid gap-10 lg:mt-20 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
+            {/* Supporting information */}
+            <div>
+              <p className="max-w-sm text-sm leading-7 text-text-muted">Two very different frontend problems — one product, one interaction-heavy digital experience.</p>
 
-            <p className="mt-8 max-w-2xl text-base leading-7 text-text-muted sm:text-lg">
-              Two very different frontend problems — one product, one interaction-heavy digital experience.
-            </p>
+              <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2">
+                <span className="font-mono text-[12px] uppercase tracking-[0.15em] text-text-subtle">Product · Experience · Interaction</span>
+              </div>
+            </div>
+
+            {/* Main statement */}
+            <div>
+              <h1
+                className="
+          text-[clamp(2.8rem,6vw,6.8rem)]
+          font-light
+          leading-[0.88]
+          tracking-[-0.065em]
+          text-text
+        "
+              >
+                From product ideas
+                <br />
+                <span className="text-text-muted">to moving interfaces.</span>
+              </h1>
+
+              <p className="mt-8 max-w-2xl text-base leading-8 text-text-muted sm:mt-10 sm:text-lg">
+                A closer look at the products, interfaces and interactions I've designed and developed — from full-stack marketplaces to motion-heavy digital experiences.
+              </p>
+            </div>
           </div>
         </div>
 

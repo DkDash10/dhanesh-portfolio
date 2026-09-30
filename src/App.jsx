@@ -5,7 +5,6 @@ import Projects from "./sections/Projects/Projects";
 import MotionLab from "./sections/MotionLab/MotionLab";
 import Toolkit from "./sections/Toolkit/Toolkit";
 import Contact from "./sections/Contact/Contact";
-import Footer from "./components/Footer/Footer";
 import CustomCursor from "./components/CustomCursor/CustomCursor";
 
 function App() {
@@ -23,7 +22,7 @@ function App() {
           <Toolkit />
           <Contact />
         </main>
-        <Footer />
+
       </div>
     </>
   );

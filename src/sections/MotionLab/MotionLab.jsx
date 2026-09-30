@@ -161,7 +161,7 @@ export default function MotionLab() {
   }, []);
 
   return (
-    <section id="motion-lab" ref={sectionRef} className="relative overflow-hidden bg-bg">
+    <section id="motion-lab" ref={sectionRef} className="relative overflow-hidden bg-bg py-10 lg:py-20">
       {/* =====================================================
           EVERYTHING INSIDE THIS CONTAINER IS PINNED TOGETHER.
           This keeps:
@@ -176,16 +176,24 @@ export default function MotionLab() {
           {/* -------------------------------------------------
               FIXED / PINNED INTRO
           ------------------------------------------------- */}
-          <div className="motion-lab-intro shrink-0 pt-8 sm:pt-10 lg:pt-12">
+          <div className="motion-lab-intro shrink-0">
+            {/* Section header */}
             <div className="flex items-center gap-4">
-              <span className="font-mono text-[12px] uppercase tracking-[0.18em] text-accent">03</span>
+              <span className="font-mono text-lg uppercase tracking-[0.18em] text-accent">03</span>
 
               <span className="h-px w-8 bg-accent/60" />
 
-              <span className="font-mono text-[12px] uppercase tracking-[0.18em] text-text-subtle">Motion lab</span>
+              <span className="font-mono text-lg uppercase tracking-[0.18em] text-text">Motion lab</span>
             </div>
 
-            <p className="mt-7 font-mono text-[12px] uppercase tracking-[0.16em] text-text-subtle sm:mt-8">Interaction is a response.</p>
+            {/* Intro */}
+            <div className="mt-8 grid gap-8 lg:grid-cols-[0.65fr_1.35fr] lg:gap-20">
+              <div>
+                <p className="max-w-sm text-base leading-relaxed text-text-muted">Interfaces should not just respond. They should communicate through movement.</p>
+
+                <span className="mt-5 block font-mono text-[12px] uppercase tracking-[0.16em] text-text-subtle">Interaction · Motion · Response</span>
+              </div>
+            </div>
           </div>
 
           {/* -------------------------------------------------
@@ -203,14 +211,14 @@ export default function MotionLab() {
               aria-hidden="true"
               className="pointer-events-none absolute left-0 top-1/2 hidden -translate-y-1/2 font-mono text-[12px] uppercase tracking-[0.16em] text-text-subtle sm:block"
             >
-              00
+              ୦୦
             </span>
 
             <span
               aria-hidden="true"
               className="pointer-events-none absolute right-0 top-1/2 hidden -translate-y-1/2 font-mono text-[12px] uppercase tracking-[0.16em] text-text-subtle sm:block"
             >
-              01
+              ୦୧
             </span>
 
             {/* =================================================

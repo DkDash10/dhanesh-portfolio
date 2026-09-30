@@ -7,28 +7,28 @@ gsap.registerPlugin(ScrollTrigger);
 
 const interests = [
   {
-    number: "01",
+    number: "୦୧",
     title: "Games",
     description: "Competitive matches, late-night sessions and the occasional victory screen.",
     icon: Gamepad2,
     images: ["/media/images/coc.jpg", "/media/images/ML.jpg", "/media/images/pes.jpg", "/media/images/bgmi.jpg"],
   },
   {
-    number: "02",
+     number: "୦୨",
     title: "Football",
     description: "The game, the rivalry, the goals and those moments worth watching twice.",
     icon: Trophy,
     images: ["/media/images/cr7.jpg", "/media/images/messi.jpg"],
   },
   {
-    number: "03",
+    number: "୦୩",
     title: "Chess",
     description: "A quiet game where one unexpected move can change everything.",
     icon: ChessKnight,
     images: ["/media/images/chess.png"],
   },
   {
-    number: "04",
+    number: "୦୪",
     title: "Music",
     description: "Albums, headphones and songs that somehow become attached to memories.",
     icon: Music2,
@@ -233,7 +233,7 @@ export default function About() {
     return () => ctx.revert();
   }, []);
   return (
-    <section id="about" ref={sectionRef} className="relative z-10 overflow-hidden bg-bg pt-28 lg:pt-44">
+    <section id="about" ref={sectionRef} className="relative z-10 overflow-hidden bg-bg pt-20 pb-10 lg:pt-40 lg:pb-20">
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 z-0 h-120 overflow-hidden">
         <video autoPlay muted loop playsInline preload="metadata" className="hero-silk-video absolute inset-0 h-full w-full scale-105 object-cover opacity-40 blur-[10px]">
           <source src="/media/bg-video.mp4" type="video/mp4" />
@@ -248,11 +248,11 @@ export default function About() {
         ================================================= */}
 
         <div className="about-reveal flex items-center gap-4">
-          <span className="font-mono text-[12px] uppercase tracking-[0.18em] text-text-subtle">01</span>
+          <span className="font-mono text-lg uppercase tracking-[0.18em] text-accent">01</span>
 
           <span className="h-px w-8 bg-accent" />
 
-          <span className="font-mono text-[12px] uppercase tracking-[0.18em] text-text-muted">Beyond the interface</span>
+          <span className="font-mono text-lg uppercase tracking-[0.18em] text-text">Beyond the interface</span>
         </div>
 
         {/* =================================================
@@ -309,7 +309,7 @@ export default function About() {
             INTEREST GRID
         ================================================= */}
 
-        <div className="about-grid mt-10 grid border-t border-border sm:grid-cols-2 lg:grid-cols-4">
+        <div className="about-grid mt-10 grid border border-border sm:grid-cols-2 lg:grid-cols-4">
           {interests.map((interest, interestIndex) => {
             const Icon = interest.icon;
 
@@ -319,7 +319,7 @@ export default function About() {
                 onClick={() => handleCardClick(interestIndex)}
                 onPointerMove={(event) => handleCardMove(event, interestIndex)}
                 onPointerLeave={() => resetCardImages(interestIndex)}
-                className={`about-card group relative min-h-77.5 touch-manipulation cursor-pointer overflow-hidden border-b border-border px-1 py-8 transition-colors duration-500 hover:bg-surface sm:px-5 sm:py-10 lg:border-b-0 lg:border-r lg:first:border-l lg:last:border-r-0 ${
+                className={`about-card group relative min-h-77.5 touch-manipulation cursor-pointer overflow-hidden border-b border-border px-1 py-8 transition-colors duration-500 hover:bg-surface sm:px-5 sm:py-10 lg:border-b-0 lg:border-r ${
                   activeInterest === interestIndex ? "bg-surface" : ""
                 }`}
               >
@@ -418,7 +418,7 @@ export default function About() {
             MEMORABLE CLOSE
         ================================================= */}
 
-        <div className="about-close grid gap-8 border-t border-border pt-10 sm:pt-12 lg:grid-cols-[1fr_auto] lg:items-end">
+        <div className="about-close grid gap-8  border-border pt-10 sm:pt-12 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
             <span className="font-mono text-[12px] uppercase tracking-[0.18em] text-text-subtle">After the interface</span>
 
@@ -428,13 +428,6 @@ export default function About() {
               <span className="text-text-muted"> after you leave them.</span>
             </p>
           </div>
-
-          <a href="#work" data-cursor="interactive" className="group inline-flex items-center gap-4 self-start text-sm uppercase tracking-[0.14em] text-text lg:self-end">
-            See what I build
-            <span className="flex h-10 w-10 items-center justify-center rounded-full border border-border transition-all duration-500 group-hover:rotate-45 group-hover:border-accent group-hover:bg-accent group-hover:text-bg">
-              <ArrowUpRight size={16} strokeWidth={1.5} />
-            </span>
-          </a>
         </div>
       </div>
     </section>

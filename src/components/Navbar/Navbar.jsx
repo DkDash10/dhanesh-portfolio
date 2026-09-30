@@ -3,9 +3,10 @@ import { ArrowUpRight } from "lucide-react";
 import ToogleTheme from "../ToogleTheme/ToggleTheme";
 
 const navItems = [
-  { label: "Work", href: "#work" },
-  { label: "Lab", href: "#lab" },
   { label: "About", href: "#about" },
+  { label: "Work", href: "#work" },
+  { label: "Lab", href: "#motion-lab" },
+  {label: "Toolkit", href: "#toolkit"}
 ];
 
 function Signature() {
