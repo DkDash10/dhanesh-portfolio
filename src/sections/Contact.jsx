@@ -159,28 +159,28 @@ export default function Contact() {
 
   return (
     <section id="contact" ref={sectionRef} className="relative overflow-hidden bg-bg">
-      <div className="mx-auto w-full max-w-portfolio px-5 pb-4 sm:px-8  lg:px-12 pt-10 lg:pt-20">
+      <div className="mx-auto w-full max-w-portfolio px-5 pb-6 sm:px-8  lg:px-12 pt-10 lg:pt-20">
         {/* =================================================
             SECTION HEADER
         ================================================= */}
 
         <div data-contact-reveal className="flex items-center gap-4">
-          <span className="font-mono text-lg uppercase tracking-[0.18em] text-accent">05</span>
+          <span className="font-mono text-base sm:text-lg uppercase tracking-[0.18em] text-accent">05</span>
 
           <span className="h-px w-8 bg-accent" />
 
-          <span className="font-mono text-lg uppercase tracking-[0.18em] text-text">Let's talk</span>
+          <span className="font-mono text-base sm:text-lg uppercase tracking-[0.18em] text-text">Let's talk</span>
         </div>
 
         {/* =================================================
             INTRO
         ================================================= */}
 
-        <div className="mt-12 grid gap-10 lg:mt-20 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
+        <div className="mt-4 grid gap-10 lg:mt-20 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
           {/* Supporting copy */}
 
           <div data-contact-reveal>
-            <p className="max-w-xs text-sm leading-7 text-text-muted">Have a product, interface or idea that needs a frontend with personality?</p>
+            <p className="max-w-xs hidden sm:block text-sm leading-7 text-text-muted">Have a product, interface or idea that needs a frontend with personality?</p>
 
             <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2">
               <span className="font-mono text-[12px] uppercase tracking-[0.15em] text-text-subtle">Available for interesting work</span>
@@ -193,10 +193,10 @@ export default function Contact() {
             <h2 data-contact-title className="text-[clamp(2.8rem,6vw,6.8rem)] font-light leading-[0.88] tracking-[-0.065em] text-text">
               Let's build something
               <br />
-              <span className="text-text-muted">worth remembering.</span>
+              <span className="text-text-muted leading-[1.1]">worth remembering.</span>
             </h2>
 
-            <p data-contact-reveal className="mt-8 max-w-2xl text-base leading-8 text-text-muted sm:mt-10 sm:text-lg">
+            <p data-contact-reveal className="mt-8 hidden sm:block max-w-2xl text-base leading-8 text-text-muted sm:mt-10 sm:text-lg">
               If you're working on something interesting, I'd love to hear about it. Tell me what you're building, what you're trying to solve, or simply where you think I could
               help.
             </p>
@@ -204,8 +204,8 @@ export default function Contact() {
         </div>
 
         {/* =================================================
-    CONTACT LINKS
-================================================= */}
+                CONTACT LINKS
+            ================================================= */}
 
         <div data-contact-reveal className="mt-16 border-t border-border sm:mt-20">
           {links.map((link, index) => (
@@ -251,7 +251,7 @@ export default function Contact() {
                 </div>
               </a>
 
-              <span className="absolute bottom-[-1px] left-0 h-px w-full origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover:scale-x-100" />
+              <span className="absolute -bottom-px left-0 h-px w-full origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover:scale-x-100" />
             </div>
           ))}
         </div>

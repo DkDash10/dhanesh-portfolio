@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { ArrowUpRight, Gamepad2, Trophy, ChessKnight, Music2 } from "lucide-react";
+import { Gamepad2, Trophy, ChessKnight, Music2 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -233,7 +233,7 @@ export default function About() {
     return () => ctx.revert();
   }, []);
   return (
-    <section id="about" ref={sectionRef} className="relative z-10 overflow-hidden bg-bg pt-20 pb-10 lg:pt-40 lg:pb-20">
+    <section id="about" ref={sectionRef} className="relative z-10 overflow-hidden bg-bg pt-28 pb-14 lg:pt-40 lg:pb-20">
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 z-0 h-120 overflow-hidden">
         <video autoPlay muted loop playsInline preload="metadata" className="hero-silk-video absolute inset-0 h-full w-full scale-105 object-cover opacity-40 blur-[10px]">
           <source src="/media/bg-video.mp4" type="video/mp4" />
@@ -248,38 +248,34 @@ export default function About() {
         ================================================= */}
 
         <div className="about-reveal flex items-center gap-4">
-          <span className="font-mono text-lg uppercase tracking-[0.18em] text-accent">01</span>
+          <span className="font-mono text-base sm:text-lg uppercase tracking-[0.18em] text-accent">01</span>
 
           <span className="h-px w-8 bg-accent" />
 
-          <span className="font-mono text-lg uppercase tracking-[0.18em] text-text">Beyond the interface</span>
+          <span className="font-mono text-base sm:text-lg uppercase tracking-[0.18em] text-text">Beyond the interface</span>
         </div>
 
         {/* =================================================
             INTRO
         ================================================= */}
 
-        <div className="mt-12 grid gap-10 lg:mt-20 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
+        <div className="mt-4 grid gap-10 lg:mt-20 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
           <div className="about-reveal">
-            <p className="max-w-xs text-sm leading-7 text-text-muted">A little more about the person behind the interfaces.</p>
+            <p className="max-w-xs hidden sm:block text-sm leading-7 text-text-muted">A little more about the person behind the interfaces.</p>
 
             <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2">
-              <span className="font-mono text-[12px] uppercase tracking-[0.15em] text-text-subtle">Mumbai, India</span>
-
-              <span className="text-text-subtle">·</span>
-
-              <span className="font-mono text-[12px] uppercase tracking-[0.15em] text-text-subtle">Frontend</span>
+              <span className="font-mono text-[12px] uppercase tracking-[0.15em] text-text-subtle">Mumbai, India · Frontend</span>
             </div>
           </div>
 
           <div>
-            <h2 className="about-reveal max-w-262.5 text-[clamp(2.8rem,6vw,6.8rem)] font-light leading-[0.9] tracking-[-0.06em] text-text">
-              Code is what I build.
+            <h2 className="about-reveal max-w-262.5 text-[clamp(3rem,6.5vw,7rem)] font-light leading-[0.9] tracking-[-0.06em] text-text">
+              I spend my days building.
               <br />
-              <span className="text-text-muted">These are what keep me curious.</span>
+              <span className="text-text-muted">My time exploring.</span>
             </h2>
 
-            <p className="about-reveal mt-8 max-w-2xl text-base leading-8 text-text-muted sm:mt-10 sm:text-lg">
+            <p className="about-reveal hidden sm:block mt-8 max-w-2xl text-base leading-8 text-text-muted sm:mt-10 sm:text-lg">
               Outside of frontend development, I spend my time around games, football, chess and music. Different worlds, different ways of thinking — all of them give me something
               to come back with.
             </p>
@@ -319,7 +315,7 @@ export default function About() {
                 onClick={() => handleCardClick(interestIndex)}
                 onPointerMove={(event) => handleCardMove(event, interestIndex)}
                 onPointerLeave={() => resetCardImages(interestIndex)}
-                className={`about-card group relative min-h-77.5 touch-manipulation cursor-pointer overflow-hidden border-b border-border px-1 py-8 transition-colors duration-500 hover:bg-surface sm:px-5 sm:py-10 lg:border-b-0 lg:border-r ${
+                className={`about-card group relative min-h-77.5 touch-manipulation cursor-pointer overflow-hidden border-b border-border px-4 py-8 transition-colors duration-500 hover:bg-surface sm:px-5 sm:py-10 lg:border-b-0 lg:border-r ${
                   activeInterest === interestIndex ? "bg-surface" : ""
                 }`}
               >

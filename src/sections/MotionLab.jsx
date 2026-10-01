@@ -19,15 +19,15 @@ const LETTER_OFFSETS_DESKTOP = [
 ];
 
 const LETTER_OFFSETS_MOBILE = [
-  [-0.58, -0.44, -7],
-  [0.54, 0.36, 6],
-  [-0.48, 0.56, -6],
-  [0.62, -0.5, 7],
-  [-0.56, 0.42, -6],
-  [0.52, -0.54, 6],
-  [-0.44, -0.4, -5],
-  [0.6, 0.38, 6],
-  [-0.5, 0.52, -6],
+  [-0.58, -0.9, -7],
+  [0.54, 1.78, 6],
+  [-0.48, 1.05, -6],
+  [0.62, -0.96, 7],
+  [-0.86, 1.44, -6],
+  [0.52, -1.02, 6],
+  [-0.44, -0.82, -5],
+  [0.6, 0.8, 6],
+  [-0.5, 0.98, -6],
 ];
 
 export default function MotionLab() {
@@ -161,7 +161,7 @@ export default function MotionLab() {
   }, []);
 
   return (
-    <section id="motion-lab" ref={sectionRef} className="relative overflow-hidden bg-bg py-10 lg:py-20">
+    <section id="motion-lab" ref={sectionRef} className="relative overflow-hidden bg-bg py-14 lg:py-28">
       {/* =====================================================
           EVERYTHING INSIDE THIS CONTAINER IS PINNED TOGETHER.
           This keeps:
@@ -179,11 +179,11 @@ export default function MotionLab() {
           <div className="motion-lab-intro shrink-0">
             {/* Section header */}
             <div className="flex items-center gap-4">
-              <span className="font-mono text-lg uppercase tracking-[0.18em] text-accent">03</span>
+              <span className="font-mono text-base sm:text-lg uppercase tracking-[0.18em] text-accent">03</span>
 
               <span className="h-px w-8 bg-accent/60" />
 
-              <span className="font-mono text-lg uppercase tracking-[0.18em] text-text">Motion lab</span>
+              <span className="font-mono text-base sm:text-lg uppercase tracking-[0.18em] text-text">Motion lab</span>
             </div>
 
             {/* Intro */}

@@ -247,22 +247,22 @@ export default function Toolkit() {
 ================================================== */}
 
         <div data-toolkit-eyebrow className="flex items-center gap-4">
-          <span className="font-mono text-lg uppercase tracking-[0.18em] text-accent">04</span>
+          <span className="font-mono text-base sm:text-lg uppercase tracking-[0.18em] text-accent">04</span>
 
           <span className="h-px w-8 bg-accent" />
 
-          <span className="font-mono text-lg uppercase tracking-[0.18em] text-text">Toolkit</span>
+          <span className="font-mono text-base sm:text-lg uppercase tracking-[0.18em] text-text">Toolkit</span>
         </div>
 
         {/* ==================================================
     INTRO
 ================================================== */}
 
-        <div className="mt-12 grid gap-10 lg:mt-20 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
+        <div className="mt-4 grid gap-10 lg:mt-20 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
           {/* Supporting copy */}
 
           <div data-toolkit-intro>
-            <p className="max-w-xs text-sm leading-7 text-text-muted">The technologies, platforms and tools I use to turn ideas into working interfaces.</p>
+            <p className="max-w-xs hidden sm:block text-sm leading-7 text-text-muted">The technologies, platforms and tools I use to turn ideas into working interfaces.</p>
 
             <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2">
               <span className="font-mono text-[12px] uppercase tracking-[0.15em] text-text-subtle">Interface · Motion · Systems</span>
@@ -282,7 +282,7 @@ export default function Toolkit() {
               </span>
             </h2>
 
-            <p data-toolkit-intro className="mt-8 max-w-2xl text-base leading-8 text-text-muted sm:text-lg">
+            <p data-toolkit-intro className="mt-8 hidden sm:block max-w-2xl text-base leading-8 text-text-muted sm:text-lg">
               Technologies I use to design, build and ship, grouped by the part of the product they serve.
             </p>
           </div>
@@ -292,7 +292,7 @@ export default function Toolkit() {
             TOOL INDEX
         ================================================== */}
 
-        <div ref={listRef} className="mt-20 border-t border-border sm:mt-28">
+        <div ref={listRef} className="mt-10 border-t border-border sm:mt-28">
           {GROUPS.map((group) => (
             <div key={group.number} data-toolkit-group className="grid border-b border-border py-10 sm:py-12 lg:grid-cols-[0.65fr_1.35fr] lg:gap-20 lg:py-14">
               {/* CATEGORY */}
@@ -333,7 +333,7 @@ export default function Toolkit() {
 
                         <span className="min-w-0 flex-1">
                           <span
-                            className={`block text-[clamp(1.55rem,3vw,2.7rem)] font-light leading-none tracking-[-0.05em] transition-all duration-300 ${
+                            className={`block text-[clamp(1.55rem,3vw,2.7rem)] font-light leading-none tracking-tighter transition-all duration-300 ${
                               isActive ? "translate-x-2 text-text" : "text-text-muted group-hover:translate-x-1 group-hover:text-text"
                             }`}
                           >

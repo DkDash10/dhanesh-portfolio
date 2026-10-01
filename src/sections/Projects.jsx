@@ -180,7 +180,7 @@ function VideoStage({ item, onEnded }) {
             <div className="font-mono text-[12px] uppercase tracking-[0.18em] text-white/55">
               {item.number} / {item.label}
             </div>
-            <h3 className="mt-2 max-w-xl text-[clamp(1.4rem,3vw,2.8rem)] font-light leading-[0.95] tracking-[-0.045em]">{item.title}</h3>
+            <h3 className="mt-2 max-w-xl hidden sm:block text-[clamp(1.4rem,3vw,2.8rem)] font-light leading-[0.95] tracking-[-0.045em]">{item.title}</h3>
           </div>
 
           <button
@@ -256,7 +256,7 @@ function ProgressysCaseStudy() {
                 <span className="font-mono text-[12px] uppercase tracking-[0.18em] text-text-subtle">Digital experience</span>
               </div>
 
-              <h2 className="mt-7 text-[clamp(3.5rem,7vw,7.5rem)] font-light leading-[0.82] tracking-[-0.075em] text-text">Progressys</h2>
+              <h2 className="mt-7 text-[clamp(2.8rem,6vw,6.8rem)] font-light leading-[0.82] tracking-[-0.075em] text-text">Progressys</h2>
             </div>
 
             <div className="flex-1 flex flex-col items-start lg:items-end">
@@ -280,7 +280,7 @@ function ProgressysCaseStudy() {
           </Reveal>
 
           <Reveal className="mt-7">
-            <p className="max-w-2xl text-base leading-7 text-text-muted sm:text-lg">{item.description}</p>
+            <p className="max-w-2xl text-sm leading-7 text-text-muted sm:text-base">{item.description}</p>
 
             <div className="mt-6 border-t border-border">
               {progressysMedia.map((media, index) => {
@@ -307,7 +307,7 @@ function ProgressysCaseStudy() {
           </Reveal>
         </div>
 
-        <div className="mt-9 w-fit">
+        <div className="mt-4 sm:mt-9 w-fit">
           <ProjectLink href="https://progressys.onrender.com/" />
         </div>
       </div>
@@ -357,7 +357,7 @@ function DwaarperCaseStudy() {
                 <span className="font-mono text-[12px] uppercase tracking-[0.18em] text-text-subtle">Full-stack marketplace</span>
               </div>
 
-              <h2 className="mt-7 text-[clamp(3.5rem,7vw,7.5rem)] font-light leading-[0.82] tracking-[-0.075em] text-text">Dwaarper</h2>
+              <h2 className="mt-7 text-[clamp(2.8rem,6vw,6.8rem)] font-light leading-[0.82] tracking-[-0.075em] text-text">Dwaarper</h2>
             </div>
 
             <div className="flex flex-1 flex-col items-start lg:items-end">
@@ -381,7 +381,7 @@ function DwaarperCaseStudy() {
           </Reveal>
 
           <Reveal className="mt-7">
-            <p className="max-w-2xl text-base leading-7 text-text-muted sm:text-lg">{item.description}</p>
+            <p className="max-w-2xl text-sm leading-7 text-text-muted sm:text-base">{item.description}</p>
 
             <div className="mt-6 border-t border-border">
               {dwaarperMedia.map((media, index) => {
@@ -406,7 +406,7 @@ function DwaarperCaseStudy() {
           </Reveal>
         </div>
 
-        <div className="mt-9 w-fit">
+        <div className="mt-4 sm:mt-9 w-fit">
           <ProjectLink href="https://dwaarper-wow5.onrender.com/" />
         </div>
       </div>
@@ -439,23 +439,23 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="work" ref={sectionRef} className="relative overflow-hidden bg-bg py-10 lg:py-20">
+    <section id="work" ref={sectionRef} className="relative overflow-hidden bg-bg py-14 lg:py-28">
       <div className="mx-auto w-full max-w-portfolio px-5 sm:px-8 lg:px-12">
         <div className="projects-header">
           {/* Section label */}
           <div className="flex items-center gap-4">
-            <span className="font-mono text-lg uppercase tracking-[0.18em] text-accent">02</span>
+            <span className="font-mono text-base sm:text-lg uppercase tracking-[0.18em] text-accent">02</span>
 
             <span className="h-px w-8 bg-accent" />
 
-            <span className="font-mono text-lg uppercase tracking-[0.18em] text-text">Selected work</span>
+            <span className="font-mono text-base sm:text-lg uppercase tracking-[0.18em] text-text">Selected work</span>
           </div>
 
           {/* Editorial intro */}
-          <div className="mt-12 grid gap-10 lg:mt-20 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
+          <div className="mt-4 grid gap-10 lg:mt-20 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
             {/* Supporting information */}
             <div>
-              <p className="max-w-sm text-sm leading-7 text-text-muted">Two very different frontend problems — one product, one interaction-heavy digital experience.</p>
+              <p className="max-w-sm hidden sm:block text-sm leading-7 text-text-muted">Two very different frontend problems — one product, one interaction-heavy digital experience.</p>
 
               <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2">
                 <span className="font-mono text-[12px] uppercase tracking-[0.15em] text-text-subtle">Product · Experience · Interaction</span>
@@ -466,7 +466,7 @@ export default function Projects() {
             <div>
               <h1
                 className="
-          text-[clamp(2.8rem,6vw,6.8rem)]
+          text-[clamp(3rem,6.5vw,7rem)]
           font-light
           leading-[0.88]
           tracking-[-0.065em]
@@ -478,7 +478,7 @@ export default function Projects() {
                 <span className="text-text-muted">to moving interfaces.</span>
               </h1>
 
-              <p className="mt-8 max-w-2xl text-base leading-8 text-text-muted sm:mt-10 sm:text-lg">
+              <p className="mt-8 max-w-2xl hidden sm:block text-base leading-8 text-text-muted sm:mt-10 sm:text-lg">
                 A closer look at the products, interfaces and interactions I've designed and developed — from full-stack marketplaces to motion-heavy digital experiences.
               </p>
             </div>

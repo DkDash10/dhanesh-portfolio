@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import { ArrowUpRight } from "lucide-react";
-import ToogleTheme from "../ToogleTheme/ToggleTheme";
+import ToogleTheme from "./ToggleTheme";
 
 const navItems = [
   { label: "About", href: "#about" },
   { label: "Work", href: "#work" },
   { label: "Lab", href: "#motion-lab" },
-  {label: "Toolkit", href: "#toolkit"}
+  { label: "Toolkit", href: "#toolkit" },
 ];
 
 function Signature() {
@@ -41,10 +40,7 @@ function GlitchLink({ item }) {
         {item.label}
       </span>
 
-      <span
-        aria-hidden="true"
-        className="absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100"
-      />
+      <span aria-hidden="true" className="absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100" />
     </a>
   );
 }
@@ -62,20 +58,15 @@ function ResumeLink() {
       data-cursor="interactive"
       className="nav-glitch-link group relative inline-flex items-center gap-1.5 py-2 text-[11px] font-medium uppercase tracking-[0.2em] text-text"
     >
+      <span aria-hidden="true" className="relative ml-1.5 flex h-2 w-2 items-center justify-center">
+        <span className="absolute h-2 w-2 rounded-full bg-accent opacity-30 animate-ping" />
+        <span className="relative h-1.5 w-1.5 rounded-full bg-accent" />
+      </span>
       <span className="nav-glitch-text relative" data-text="Resume">
         Resume
       </span>
 
-      <ArrowUpRight
-        size={13}
-        strokeWidth={1.5}
-        className="relative transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-      />
-
-      <span
-        aria-hidden="true"
-        className="absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100"
-      />
+      <span aria-hidden="true" className="absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100" />
     </a>
   );
 }
@@ -173,15 +164,13 @@ export default function Navbar() {
           DESKTOP / MOBILE NAV
       ===================================================== */}
 
-      <header
-        className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 sm:pt-5 lg:px-8"
-      >
+      <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 sm:pt-5 lg:px-8">
         <nav
           className={` pointer-events-auto mx-auto flex h-17 w-full max-w-340 items-center justify-between px-4 transition-all duration-500 ease-[cubic-bezier(.22,1,.36,1)] sm:px-6 lg:h-18 lg:px-7 ${
-      scrolled
-        ? ` rounded-[18px] border border-border bg-linear-to-r from-bg/92 via-surface/88 to-bg/92 shadow-[0_18px_55px_rgba(0,0,0,0.12)] `
-        : ` rounded-none border-transparent bg-transparent shadow-none backdrop-blur-0 `
-    } ${navVisible ? "translate-y-0 opacity-100" : "translate-y-[-120%] opacity-0 scale-[0.98]"} `}
+            scrolled
+              ? ` rounded-[18px] border border-border bg-linear-to-r from-bg/92 via-surface/88 to-bg/92 shadow-[0_18px_55px_rgba(0,0,0,0.12)] `
+              : ` rounded-none border-transparent bg-transparent shadow-none backdrop-blur-0 `
+          } ${navVisible ? "translate-y-0 opacity-100" : "translate-y-[-120%] opacity-0 scale-[0.98]"} `}
         >
           {/* Signature */}
 
@@ -222,18 +211,14 @@ export default function Navbar() {
       ===================================================== */}
 
       <div
-        className={` fixed inset-0 z-40 bg-bg/60 backdrop-blur-xl transition-all duration-500 md:hidden ${menuOpen ? "visible opacity-100" : "pointer-events-none invisible opacity-0"} `}
+        className={`fixed inset-0 z-40 bg-bg/60 backdrop-blur-xl transition-all duration-500 md:hidden ${menuOpen ? "visible opacity-100" : "pointer-events-none invisible opacity-0"} `}
       >
-        <div
-          className="absolute inset-x-3 bottom-3 top-3 flex flex-col overflow-hidden rounded-3xl border border-border bg-surface/75 shadow-[0_24px_80px_rgba(0,0,0,0.25)] backdrop-blur-3xl sm:inset-x-5 sm:bottom-5 sm:top-5"
-        >
+        <div className="absolute inset-x-3 bottom-3 top-3 flex flex-col overflow-hidden rounded-3xl border border-border bg-surface/75 shadow-[0_24px_80px_rgba(0,0,0,0.25)] backdrop-blur-3xl sm:inset-x-5 sm:bottom-5 sm:top-5">
           {/* =================================================
               MOBILE MENU HEADER
           ================================================= */}
 
-          <div
-            className="flex h-18 shrink-0 items-center justify-between border-b border-border-light px-5 sm:px-7"
-          >
+          <div className="flex h-18 shrink-0 items-center justify-between border-b border-border-light px-5 sm:px-7">
             <Signature />
 
             <div className="flex items-center gap-2">
@@ -248,9 +233,7 @@ export default function Navbar() {
           ================================================= */}
 
           <div className="flex flex-1 flex-col px-5 pb-7 sm:px-8">
-            <div
-              className={` flex items-center gap-3 pt-8 transition-all duration-500 ${menuOpen ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"} `}
-            >
+            <div className={` flex items-center gap-3 pt-8 transition-all duration-500 ${menuOpen ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"} `}>
               <div></div>
               <span className="h-px w-8 bg-accent" />
               <div className="flex items-center justify-between w-full">
@@ -273,10 +256,7 @@ export default function Navbar() {
                   }}
                   className={` nav-glitch-link group flex items-center justify-between border-b border-border-light py-5 transition-all duration-500 ${menuOpen ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"} `}
                 >
-                  <span
-                    className="nav-glitch-text text-[clamp(2.4rem,11vw,4rem)] font-light leading-none tracking-[-0.04em] text-text"
-                    data-text={item.label}
-                  >
+                  <span className="nav-glitch-text text-[clamp(2.4rem,11vw,4rem)] font-light leading-none tracking-[-0.04em] text-text" data-text={item.label}>
                     {item.label}
                   </span>
 
@@ -299,11 +279,10 @@ export default function Navbar() {
                 }}
               >
                 Download Resume
-                <ArrowUpRight
-                  size={14}
-                  strokeWidth={1.5}
-                  className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                />
+                <span aria-hidden="true" className="relative ml-1 flex h-2 w-2 items-center justify-center">
+                  <span className="absolute h-2 w-2 rounded-full bg-accent opacity-30 animate-ping" />
+                  <span className="relative h-1.5 w-1.5 rounded-full bg-accent" />
+                </span>
               </a>
 
               <p
