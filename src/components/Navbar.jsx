@@ -52,7 +52,7 @@ function GlitchLink({ item }) {
 function ResumeLink() {
   return (
     <a
-      href="/resume/Dhanesh-Dash-Resume.pdf"
+      href="/resume/Dhanesh_Frontend_Developer_Resume.pdf"
       target="_blank"
       rel="noopener noreferrer"
       data-cursor="interactive"

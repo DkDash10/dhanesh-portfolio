@@ -35,7 +35,7 @@ const links = [
   {
     label: "Resume",
     value: "Download PDF",
-    href: "/resume/Dhaneshkumar-Dash-Resume.pdf",
+    href: "/resume/Dhanesh_Frontend_Developer_Resume.pdf",
     description: "Background",
     external: false,
   },
@@ -211,9 +211,12 @@ export default function Contact() {
           {links.map((link, index) => (
             <div key={link.label} className="group relative border-b border-border">
               <a
+                ref={link.label === "Email" ? emailRef : undefined}
                 href={link.href}
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noreferrer" : undefined}
+                onMouseEnter={link.label === "Email" ? handleEmailEnter : undefined}
+                onMouseLeave={link.label === "Email" ? handleEmailLeave : undefined}
                 className="flex items-center justify-between py-5 sm:py-6"
               >
                 <div className="flex min-w-0 items-center gap-5 sm:gap-8">
