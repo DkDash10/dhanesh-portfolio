@@ -439,12 +439,12 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="work" ref={sectionRef} className="relative overflow-hidden bg-bg py-14 lg:py-28">
+    <section id="work" ref={sectionRef} className="relative overflow-hidden bg-bg pt-28 pb-14 lg:pt-40 lg:pb-20">
       <div className="mx-auto w-full max-w-portfolio px-5 sm:px-8 lg:px-12">
         <div className="projects-header">
           {/* Section label */}
           <div className="flex items-center gap-4">
-            <span className="font-mono text-base sm:text-lg uppercase tracking-[0.18em] text-accent">02</span>
+            <span className="font-mono text-base sm:text-lg uppercase tracking-[0.18em] text-accent">01</span>
 
             <span className="h-px w-8 bg-accent" />
 

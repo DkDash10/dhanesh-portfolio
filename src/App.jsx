@@ -16,8 +16,8 @@ function App() {
 
         <main>
           <Hero />
-          <About />
           <Projects />
+          <About />
           <MotionLab />
           <Toolkit />
           <Contact />

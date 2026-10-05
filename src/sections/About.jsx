@@ -233,7 +233,7 @@ export default function About() {
     return () => ctx.revert();
   }, []);
   return (
-    <section id="about" ref={sectionRef} className="relative z-10 overflow-hidden bg-bg pt-28 pb-14 lg:pt-40 lg:pb-20">
+    <section id="about" ref={sectionRef} className="relative z-10 overflow-hidden bg-bg py-14 lg:py-28">
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 z-0 h-120 overflow-hidden">
         <video autoPlay muted loop playsInline preload="metadata" className="hero-silk-video absolute inset-0 h-full w-full scale-105 object-cover opacity-40 blur-[10px]">
           <source src="/media/bg-video.mp4" type="video/mp4" />
@@ -248,7 +248,7 @@ export default function About() {
         ================================================= */}
 
         <div className="about-reveal flex items-center gap-4">
-          <span className="font-mono text-base sm:text-lg uppercase tracking-[0.18em] text-accent">01</span>
+          <span className="font-mono text-base sm:text-lg uppercase tracking-[0.18em] text-accent">02</span>
 
           <span className="h-px w-8 bg-accent" />
 
