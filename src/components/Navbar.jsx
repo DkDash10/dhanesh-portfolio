@@ -53,8 +53,7 @@ function ResumeLink() {
   return (
     <a
       href="/resume/Dhanesh_Frontend_Developer_Resume.pdf"
-      target="_blank"
-      rel="noopener noreferrer"
+      download="Dhanesh_Frontend_Developer_Resume.pdf"
       data-cursor="interactive"
       className="nav-glitch-link group relative inline-flex items-center gap-1.5 py-2 text-[11px] font-medium uppercase tracking-[0.2em] text-text"
     >
@@ -270,8 +269,7 @@ export default function Navbar() {
             <div className="mt-auto">
               <a
                 href="/resume/Dhanesh_Frontend_Developer_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+                download="Dhanesh_Frontend_Developer_Resume.pdf"
                 onClick={closeMenu}
                 className={` group inline-flex items-center gap-2 border-b border-border pb-2 text-[11px] uppercase tracking-[0.18em] text-text transition-all duration-500 ${menuOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"} `}
                 style={{

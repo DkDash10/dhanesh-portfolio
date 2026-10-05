@@ -38,6 +38,7 @@ const links = [
     href: "/resume/Dhanesh_Frontend_Developer_Resume.pdf",
     description: "Background",
     external: false,
+    download: "Dhanesh_Frontend_Developer_Resume.pdf",
   },
 ];
 
@@ -213,6 +214,7 @@ export default function Contact() {
               <a
                 ref={link.label === "Email" ? emailRef : undefined}
                 href={link.href}
+                download={link.download}
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noreferrer" : undefined}
                 onMouseEnter={link.label === "Email" ? handleEmailEnter : undefined}
