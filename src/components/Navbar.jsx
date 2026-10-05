@@ -269,7 +269,7 @@ export default function Navbar() {
 
             <div className="mt-auto">
               <a
-                href="/resume/Dhanesh-Dash-Resume.pdf"
+                href="/resume/Dhanesh_Frontend_Developer_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={closeMenu}
