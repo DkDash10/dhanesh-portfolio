@@ -70,6 +70,28 @@ function ResumeLink() {
   );
 }
 
+function FloatingResumeLink({ className, children = "Resume", visible }) {
+  return (
+    <a
+      href="/resume/Dhanesh_Frontend_Developer_Resume.pdf"
+      download="Dhanesh_Frontend_Developer_Resume.pdf"
+      data-cursor="interactive"
+      aria-hidden={!visible}
+      tabIndex={visible ? undefined : -1}
+      className={`${className} transition-all duration-500 ease-[cubic-bezier(.22,1,.36,1)] motion-reduce:transition-none ${visible ? "translate-x-0 scale-100 opacity-100" : "pointer-events-none translate-x-5 scale-95 opacity-0"
+        }`}
+    >
+      <span aria-hidden="true" className="relative flex h-2 w-2 items-center justify-center">
+        <span className="absolute h-2 w-2 animate-ping rounded-full bg-accent opacity-30" />
+        <span className="relative h-1.5 w-1.5 rounded-full bg-accent" />
+      </span>
+      <span className="nav-glitch-text relative" data-text={children}>
+        {children}
+      </span>
+    </a>
+  );
+}
+
 /* =========================================================
    MOBILE MENU BUTTON
 ========================================================= */
@@ -104,6 +126,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [navVisible, setNavVisible] = useState(true);
+  const [nearPageEnd, setNearPageEnd] = useState(false);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -111,6 +134,10 @@ export default function Navbar() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       const hidePoint = window.innerHeight * 0.7;
+      const viewportBottom = currentScrollY + window.innerHeight;
+      const pageEndThreshold = document.documentElement.scrollHeight - window.innerHeight * 0.3;
+
+      setNearPageEnd(viewportBottom >= pageEndThreshold);
 
       // Always show navbar near the top
       if (currentScrollY <= 40) {
@@ -139,9 +166,12 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll, {
       passive: true,
     });
+    window.addEventListener("resize", handleScroll);
+    handleScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
     };
   }, []);
 
@@ -157,6 +187,8 @@ export default function Navbar() {
     setMenuOpen(false);
   };
 
+  const resumeCtaVisible = !navVisible && !nearPageEnd;
+
   return (
     <>
       {/* =====================================================
@@ -165,11 +197,10 @@ export default function Navbar() {
 
       <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 sm:pt-5 lg:px-8">
         <nav
-          className={` pointer-events-auto mx-auto flex h-17 w-full max-w-340 items-center justify-between px-4 transition-all duration-500 ease-[cubic-bezier(.22,1,.36,1)] sm:px-6 lg:h-18 lg:px-7 ${
-            scrolled
-              ? ` rounded-[18px] border border-border bg-linear-to-r from-bg/92 via-surface/88 to-bg/92 shadow-[0_18px_55px_rgba(0,0,0,0.12)] `
-              : ` rounded-none border-transparent bg-transparent shadow-none backdrop-blur-0 `
-          } ${navVisible ? "translate-y-0 opacity-100" : "translate-y-[-120%] opacity-0 scale-[0.98]"} `}
+          className={` pointer-events-auto mx-auto flex h-17 w-full max-w-340 items-center justify-between px-4 transition-all duration-500 ease-[cubic-bezier(.22,1,.36,1)] sm:px-6 lg:h-18 lg:px-7 ${scrolled
+            ? ` rounded-[18px] border border-border bg-linear-to-r from-bg/92 via-surface/88 to-bg/92 shadow-[0_18px_55px_rgba(0,0,0,0.12)] `
+            : ` rounded-none border-transparent bg-transparent shadow-none backdrop-blur-0 `
+            } ${navVisible ? "translate-y-0 opacity-100" : "translate-y-[-120%] opacity-0 scale-[0.98]"} `}
         >
           {/* Signature */}
 
@@ -204,6 +235,13 @@ export default function Navbar() {
           <MenuButton open={menuOpen} onClick={() => setMenuOpen((value) => !value)} />
         </nav>
       </header>
+
+      <FloatingResumeLink
+        visible={resumeCtaVisible}
+        className="group fixed bottom-5 right-5 z-30 inline-flex items-center gap-2 rounded-xl border border-border bg-surface/90 px-3 py-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-text shadow-[0_12px_35px_rgba(0,0,0,0.2)] backdrop-blur-md hover:border-accent sm:bottom-7 sm:right-7 sm:px-4 sm:py-3 sm:text-[11px]"
+      >
+        Resume
+      </FloatingResumeLink>
 
       {/* =====================================================
           MOBILE GLASS MENU
